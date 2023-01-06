@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!-- code for embedding Mirador view extracted from: https://iiif.harvard.edu/mirador-viewer/ -->
+	<title>IIIF test</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel='stylesheet' href='./css/neve-style-main-new-3.3.2.css' type='text/css' media='all' />
+    <link rel="stylesheet" href="./css/neve-style-inline.css">
+    <link rel='stylesheet' href='./css/neve-child-3.3.2.css' type='text/css' media='all' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	
+<main id="content">
+
+<div class="container single-page-container">
+	<div class="row">
+		<div class="nv-single-page-wrap col">
+            <p>Just give me an intro paragraph.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero numquam eligendi architecto ipsum totam accusantium asperiores est modi! Repudiandae, repellat pariatur quibusdam eos voluptatem dolorem maxime illum quis ipsum culpa.</p>
+            <p>And then the viewer.</p>
+            <h2>List of Manifests</h2>
+            <ul>
+              <li><a class="iiif-updater" href="#" data-manifests='{"https://iiif.lib.harvard.edu/manifests/drs:51287251":{"provider":"Harvard University Library"}}' data-windows='[{"id":"primaryWindow","loadedManifest":"https://iiif.lib.harvard.edu/manifests/drs:51287251"}]'>Harvard</a></li>
+              <li><a class="iiif-updater" href="#" data-manifests='{"https://digital.lib.miamioh.edu/iiif/info/postcards/108006/manifest.json":{"provider":"Miami University"}}' data-windows='[{"id":"primaryWindow","loadedManifest":"https://digital.lib.miamioh.edu/iiif/info/postcards/108006/manifest.json"}]'>Miami</a></li>
+            </ul>
+
+	        <div class="nv-content-wrap entry-content">
+                <div id="m3-wrapper">
+                <div id="viewer"></div>
+                </div>
+            </div>		
+        </div>
+    </div>
+</div>  
+
+</main>
+
+
+</div><!--/.wrapper-->
+<script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
+<script>
+    function loadIIIF(manifests, windows){
+        window.mirador = Mirador.viewer({
+            id: "viewer",
+            manifests: manifests,
+            windows: windows,
+            window: {
+                defaultView: 'single'
+            }
+        });
+    }
+
+    $(function(){
+        $('.iiif-updater').click(function() {
+            var manifests = ($(this).data('manifests'));
+            var windows = ($(this).data('windows'));
+            console.log((manifests), windows)
+            loadIIIF(manifests, windows);
+        });
+        $('.iiif-updater').first().click(); // display the first manifest on page load
+    });
+</script>
+<script>
+  /* 
+  minify this code to generate code for the link data-attr above
+  */
+         // harvardManifest = {
+        //         "https://iiif.lib.harvard.edu/manifests/drs:51287251": {
+        //         "provider": "Harvard University Library"
+        //     }
+        // };
+        // harvardWindows = [
+        //     {
+        //         "id": "primaryWindow",
+        //         "loadedManifest": "https://iiif.lib.harvard.edu/manifests/drs:51287251",
+        //     }
+        // ];
+        // miamiManifest = {
+        //     "https://digital.lib.miamioh.edu/iiif/info/postcards/108006/manifest.json": {
+        //         "provider": "Miami University"
+        //     }
+        // };
+        // miamiWindows = [
+        //     {
+        //         "id": "primaryWindow",
+        //         "loadedManifest": "https://digital.lib.miamioh.edu/iiif/info/postcards/108006/manifest.json",
+        //     }
+        // ];
+</script>
+</body>
+
+</html>
