@@ -17,13 +17,14 @@
 	
 <main id="content">
 
-<div class="container single-page-container">
+
+    <div class="container single-page-container">
 	<div class="row">
 		<div class="nv-single-page-wrap col">
-            <p>Just give me an intro paragraph.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero numquam eligendi architecto ipsum totam accusantium asperiores est modi! Repudiandae, repellat pariatur quibusdam eos voluptatem dolorem maxime illum quis ipsum culpa.</p>
-            <p>And then the viewer.</p>
-            <div id="iiif-trigger">Click here to show IIIF</div>
+            <h1>Embedding Mirador like Harvard</h1>
+
+            <p>This page is based directly on the <a href="https://iiif.harvard.edu/mirador-viewer/">Harvard IIIF Mirador</a> page. It removes everything except what is necessary to function and uses a bunch of external stylesheets to embed a Mirador IIIF viewer in a page with other content.</p>
+            <p>For a more customized version, see the <a href="embed.html">embed page</a>.</p>
 	        <div class="nv-content-wrap entry-content">
                 <div id="m3-wrapper">
                 <div id="viewer"></div>
@@ -62,21 +63,7 @@
                     loadedManifest: "https://iiif.lib.harvard.edu/manifests/drs:51287251",
                 }
             ];
-            miamiManifest = {
-                "https://digital.lib.miamioh.edu/iiif/info/postcards/108006/manifest.json": {
-                    "provider": "Miami University"
-                }
-            };
-            miamiWindows = [
-                {
-                    id: "primaryWindow",
-                    loadedManifest: "https://digital.lib.miamioh.edu/iiif/info/postcards/108006/manifest.json",
-                }
-            ];
         loadIIIF(startManifest, startWindows);
-        $('#iiif-trigger').click(function() {
-            loadIIIF(miamiManifest, miamiWindows);
-        })
     });
 </script>
 </body>

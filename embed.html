@@ -4,7 +4,7 @@
 
 <head>
     <!-- code for embedding Mirador view extracted from: https://iiif.harvard.edu/mirador-viewer/ -->
-	<title>IIIF test</title>
+	<title>Switch between embedded IIIF content</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link rel='stylesheet' href='./css/neve-style-main-new-3.3.2.css' type='text/css' media='all' />
@@ -20,11 +20,24 @@
 <div class="container single-page-container">
 	<div class="row">
 		<div class="nv-single-page-wrap col">
-            <p>Just give me an intro paragraph.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero numquam eligendi architecto ipsum totam accusantium asperiores est modi! Repudiandae, repellat pariatur quibusdam eos voluptatem dolorem maxime illum quis ipsum culpa.</p>
-            <p>And then the viewer.</p>
-            <h2>List of Manifests</h2>
-            <ul>
+            <h1>IIIF embedding - Switch between content</h1>
+            <p>We want to be able to embed the Mirador IIIF viewer as in the <a href="harvard.html">Harvard Demo</a>, but we also want to be able to switch between multiple manifests.</p>
+            <p>To do that, we're going to need to pass the manifests and window specs to a script using the data- attributes of our links.</p>
+            <p>Use a <a href="https://codebeautify.org/jsonminifier">JSON minifier</a> to prep the content. For example:</p>
+            <pre>
+              harvardManifest = {
+                "https://iiif.lib.harvard.edu/manifests/drs:51287251": {
+                    "provider": "Harvard University Library"
+                }
+              };
+            </pre>
+            <p>becomes</p>
+            <pre>
+              &lt;a class=&quot;iiif-updater&quot; href=&quot;#&quot; data-manifests='{&quot;https://iiif.lib.harvard.edu/manifests/drs:51287251&quot;:{&quot;provider&quot;:&quot;Harvard University Library&quot;}}' ...&gt;&lt;/a&gt;
+            </pre>
+            <h2>List of manifests</h2>
+            <p>Click these manifests to load them in the viewer below.</p>
+            <ul style="margin-bottom: 2.5rem">
               <li><a class="iiif-updater" href="#" data-manifests='{"https://iiif.lib.harvard.edu/manifests/drs:51287251":{"provider":"Harvard University Library"}}' data-windows='[{"id":"primaryWindow","loadedManifest":"https://iiif.lib.harvard.edu/manifests/drs:51287251"}]'>Harvard</a></li>
               <li><a class="iiif-updater" href="#" data-manifests='{"https://digital.lib.miamioh.edu/iiif/info/postcards/108006/manifest.json":{"provider":"Miami University"}}' data-windows='[{"id":"primaryWindow","loadedManifest":"https://digital.lib.miamioh.edu/iiif/info/postcards/108006/manifest.json"}]'>Miami</a></li>
             </ul>
@@ -56,7 +69,8 @@
     }
 
     $(function(){
-        $('.iiif-updater').click(function() {
+        $('.iiif-updater').click(function(e) {
+            e.preventDefault();
             var manifests = ($(this).data('manifests'));
             var windows = ($(this).data('windows'));
             console.log((manifests), windows)
@@ -69,11 +83,11 @@
   /* 
   minify this code to generate code for the link data-attr above
   */
-         // harvardManifest = {
-        //         "https://iiif.lib.harvard.edu/manifests/drs:51287251": {
-        //         "provider": "Harvard University Library"
-        //     }
-        // };
+         harvardManifest = {
+                "https://iiif.lib.harvard.edu/manifests/drs:51287251": {
+                "provider": "Harvard University Library"
+            }
+        };
         // harvardWindows = [
         //     {
         //         "id": "primaryWindow",
