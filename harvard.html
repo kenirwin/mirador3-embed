@@ -7,10 +7,10 @@
 	<title>IIIF test</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel='stylesheet' href='./css/neve-style-main-new-3.3.2.css' type='text/css' media='all' />
-    <link rel="stylesheet" href="./css/neve-style-inline.css">
-    <link rel='stylesheet' href='./css/neve-child-3.3.2.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='./css/mirador-wrapper.css' type='text/css' media='all' />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -18,18 +18,16 @@
 <main id="content">
 
 
-    <div class="container single-page-container">
+    <div class="container">
 	<div class="row">
-		<div class="nv-single-page-wrap col">
+		<div class="col">
             <h1>Embedding Mirador like Harvard</h1>
 
             <p>This page is based directly on the <a href="https://iiif.harvard.edu/mirador-viewer/">Harvard IIIF Mirador</a> page. It removes everything except what is necessary to function and uses a bunch of external stylesheets to embed a Mirador IIIF viewer in a page with other content.</p>
             <p>For a more customized version, see the <a href="embed.html">embed page</a>.</p>
-	        <div class="nv-content-wrap entry-content">
-                <div id="m3-wrapper">
+            <div id="m3-wrapper">
                 <div id="viewer"></div>
-                </div>
-            </div>		
+            </div>
         </div>
     </div>
 </div>  
