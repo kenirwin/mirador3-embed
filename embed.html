@@ -7,11 +7,11 @@
 	<title>Switch between embedded IIIF content</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel='stylesheet' href='./css/neve-style-main-new-3.3.2.css' type='text/css' media='all' />
-    <link rel="stylesheet" href="./css/neve-style-inline.css">
-    <link rel='stylesheet' href='./css/neve-child-3.3.2.css' type='text/css' media='all' />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
+  <link rel="stylesheet" href="./css/mirador-wrapper.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  </head>
 
 <body>
 	
@@ -75,6 +75,8 @@
             var windows = ($(this).data('windows'));
             console.log((manifests), windows)
             loadIIIF(manifests, windows);
+            $('.iiif-updater').removeClass('active');
+            $(this).addClass('active');
         });
         $('.iiif-updater').first().click(); // display the first manifest on page load
     });
